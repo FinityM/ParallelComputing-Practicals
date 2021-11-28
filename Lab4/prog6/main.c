@@ -3,8 +3,8 @@
 #define EXTERN
 #include "libVarsFunc.h"
 
-float main(void){
-  arrSize = 12;
+int main(int argc, char* argv[]){
+  arrSize = 100,000;
   
   // Declare a float array from 1 to 12
   float* float_arr = (float*) calloc(arrSize, sizeof(float));
