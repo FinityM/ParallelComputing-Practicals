@@ -1,0 +1,8 @@
+# This is my new Makefile
+
+prog2: prog2.c mythread_func.c mythread_func.o
+	gcc prog2.c mythread_func.o -lpthread -o prog2
+
+mythread_func.o: mythread_func.c
+	gcc -c mythread_func.c
+

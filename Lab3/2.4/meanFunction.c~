@@ -1,0 +1,13 @@
+float meanFunction(float *array, int am){
+    float sum = 0.0;
+    float mean;
+    int i;
+
+    for(i = 0; i < am; i++){
+        sum += array[i];
+    }
+    mean =  sum / (float) am;
+
+    return mean;
+}
+

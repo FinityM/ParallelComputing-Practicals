@@ -1,0 +1,16 @@
+#include <math.h>
+
+float sDeviate(float array[],int size, float mean){
+  float standDev = 0.0;
+  int i;
+  float diff;
+  float sqrt_stdev_divide_bysize;
+
+  for (i = 0; i < size; ++i){
+    diff = array[i] - mean;
+    standDev += diff * diff;
+  }
+
+  return sqrt(standDev / size);
+}
+

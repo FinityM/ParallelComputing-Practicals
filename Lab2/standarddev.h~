@@ -1,0 +1,17 @@
+#include <math.h>
+float sDeviate(float array[],int arrayS){
+    float sum = 0;
+    float mean;
+    float standDev = 0;
+    int i;
+    for(i = 0; i < arraySize; i++){
+        sum += array[i];
+    }
+
+    mean = (float) sum / arraySize;
+    for (i = 0; i < arraySize; ++i){
+        standDev += pow(array[i] - mean, 2);
+    }
+    
+    return sqrt(standDev / 10);
+}

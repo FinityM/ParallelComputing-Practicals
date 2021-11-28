@@ -1,0 +1,56 @@
+/* File: main_hello.c
+// Purpose: Illustrate basic use of pthreads: create multiple threads,
+// each of which prints a message.
+//
+// Input: none
+// Output: message from each thread
+//
+// Usage: $./main_hello
+//
+// See also “Intro to Parallel Programming, Section 4.2 (p. 153 and ff.)// My firstPthreads program: create a child thread, and get it to print a message to the console 
+*/
+#include <stdio.h>
+#include <stdlib.h>
+#include <pthread.h>
+
+const int MAX_THREADS = 64;
+
+// Declare “Child” Thread function
+void *mythread_func(void *param);
+
+/* Global variable:
+   accessible to all threads. Note: we don't use the
+   extern keyword here, because this file is where the global variable
+   is first declared and defined.
+*/
+
+int thread_count = 4;
+
+void *child_hello(void* rank); // Thread function
+
+int main()
+{
+  // For the thread rank, use long in case of a 64-bit system.
+  long thread;
+
+  pthread_t *thread_handles; // declare array of pthread structures
+
+  // Allocate memory for our child threads. Note: malloc creates a
+  // block of memory on the heap (not the stack). So, it is essential
+  // to use free() at the end of the program to free or “de-allocate”
+  // the memory on the heap
+  thread_handles = malloc (thread_count*sizeof(pthread_t));
+
+  // Create the child threads, and pass the child thread rank “thread”
+  // to the child_hello() function
+  for (thread = 0; thread < thread_count; thread++)
+  pthread_create(&thread_handles[thread], NULL, child_hello, (void *) thread);
+
+  printf("Hello from the main thread\n");
+
+  for (thread = 0; thread < thread_count; thread++)
+  pthread_join(thread_handles[thread], NULL);
+
+  free(thread_handles);
+  return 0;
+}

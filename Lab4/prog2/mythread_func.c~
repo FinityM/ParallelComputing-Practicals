@@ -1,0 +1,7 @@
+
+// “Child” Thread function
+void *mythread_func(void *param)
+{
+  // Get the child thread to print a message
+  printf("In child thread code \n");
+}

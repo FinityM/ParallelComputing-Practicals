@@ -1,0 +1,2 @@
+void meanFunction(float *mean, float *array, int arrsize);
+float sDeviate(float *stdev, float *array, int size, float mean);

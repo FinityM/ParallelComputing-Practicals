@@ -1,0 +1,43 @@
+#include <stdio.h>
+
+// Constant for the array size
+#define arraySize 10
+
+int main()
+{
+  // Declare a sum,mean and the arrays values initial value
+  float sum = 0;
+  float mean = 0;
+  float values;
+  
+  // Declare the array
+  float floatArray[arraySize] = {1.0,2.0,3.0,4.0,5.0,6.0,7.0,8.0,9.0,10.0};
+
+  // Get the size of the array with size_t data type to get the size of objects
+  // This line of code keeps adding the value into the program causing a miscalculation
+  // The idea is to make sure that the code is not hard coded
+  //size_t fArraySize = sizeof(floatArray)/sizeof(float);
+
+  // Print statements for the program
+  printf("This program is running, it will calculate the declared arrays mean \n"); 
+  printf("Values in the array \n");
+
+  // The for loop to iterate through the array
+  for (values = 0; values <= 10; values++){
+   
+    printf("%.2f \n",values);
+
+    // Sum up the values
+    sum = sum + values;
+
+    // Mean of the values
+    mean = sum / arraySize;
+    
+  }
+
+  printf("Sum: %.2f \n" ,sum);
+  printf("Mean: %.2f \n",mean);
+
+  return 0;  
+}
+
