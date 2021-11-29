@@ -9,6 +9,7 @@ EXTERN float mean;
 #include <pthread.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
 
 typedef struct data{
   float* arr;

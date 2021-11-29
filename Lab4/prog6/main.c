@@ -3,13 +3,18 @@
 #define EXTERN
 #include "libVarsFunc.h"
 
-int main(int argc, char* argv[]){
-  arrSize = 100,000;
-  
-  // Declare a float array from 1 to 12
+int main(void){
+  arrSize = 100000;
+  float min = 1.0;
+  float max = 10.0;
+
+  // Randomise function
+  srand((unsigned int) time(NULL));
+    
+  // Declare a float array with random values between 1 and 10
   float* float_arr = (float*) calloc(arrSize, sizeof(float));
   for(int i = 0; i < arrSize; i++){
-    float_arr[i] = i + 1;
+    float_arr[i] = ((float)rand() / (float) RAND_MAX) * (max - min) + min;
   }
 
   //Declare the arguments for 2 threads
