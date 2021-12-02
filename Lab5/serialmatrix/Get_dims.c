@@ -7,6 +7,9 @@
  * Errors:     If one of the dimensions isn't positive, the program
  *             prints an error and quits
  */
+
+#include <stdio.h>
+#include <stdlib.h>
 void Get_dims(int *m_p /* out */, int *n_p /* out */) {
   printf("Enter the number of rows\n");
   scanf("%d", m_p);

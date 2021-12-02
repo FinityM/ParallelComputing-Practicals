@@ -5,6 +5,9 @@
  *             n:       order of matrix
  * Out arg:    x:       the vector being read in
  */
+
+#include <stdio.h>
+
 void Read_vector(char prompt[] /* in  */, double x[] /* out */,
                  int n /* in  */) {
   int i;
