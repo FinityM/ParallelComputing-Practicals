@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <pthread.h>
 
-float sum_func(){
+float sum_func(void* p){
+    
 
 }
