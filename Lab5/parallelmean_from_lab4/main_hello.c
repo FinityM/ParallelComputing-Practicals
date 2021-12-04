@@ -32,6 +32,22 @@ int main(int argc, char* argv[])
   float min = 1.0;
   float max = 10.0;
 
+  // Initialise an array
+  float *array;
+
+  // Initialise a mean
+  float mean;
+
+   // Randomise function
+   srand((unsigned int) time(NULL));
+
+  // Float array with random values between 1 and 10
+  float* float_arr = (float*) calloc(arrSize, sizeof(float));
+
+  for (int i = 0; i < arrSize; i++){
+    float_arr[i] = ((float) rand() / (float) RAND_MAX) * (max - min) + min;
+  }
+
   //Initialise thread to cmd args
   thread_count = atoi(argv[1]);
   
