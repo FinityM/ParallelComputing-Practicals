@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <pthread.h>
+#include <time.h>
 #include "functions.h"
 
 const int MAX_THREADS = 64;
@@ -24,6 +25,13 @@ const int MAX_THREADS = 64;
 
 int main(int argc, char* argv[])
 {
+  // Initialise array size
+  float arrSize = 100000.0;
+
+  // Initialise min and max
+  float min = 1.0;
+  float max = 10.0;
+
   //Initialise thread to cmd args
   thread_count = atoi(argv[1]);
   
