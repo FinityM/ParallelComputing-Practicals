@@ -7,7 +7,7 @@
 //
 // Usage: $./main_hello
 //
-// See also “Intro to Parallel Programming, Section 4.2 (p. 153 and ff.)// My firstPthreads program: create a child thread, and get it to print a message to the console 
+// See also “Intro to Parallel Programming, Section 4.2 (p. 153 and ff.)// My firstPthreads program: create a child thread, and get it to print a message to the console
 */
 #include <stdio.h>
 #include <stdlib.h>
@@ -23,7 +23,7 @@ const int MAX_THREADS = 64;
    is first declared and defined.
 */
 
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
   // Initialise array size
   float arrSize = 100000.0;
@@ -38,19 +38,23 @@ int main(int argc, char* argv[])
   // Initialise a mean
   float mean;
 
-   // Randomise function
-   srand((unsigned int) time(NULL));
+  // Initialise a sum
+  float sum;
+
+  // Randomise function
+  srand((unsigned int)time(NULL));
 
   // Float array with random values between 1 and 10
-  float* float_arr = (float*) calloc(arrSize, sizeof(float));
+  float *float_arr = (float *)calloc(arrSize, sizeof(float));
 
-  for (int i = 0; i < arrSize; i++){
-    float_arr[i] = ((float) rand() / (float) RAND_MAX) * (max - min) + min;
+  for (int i = 0; i < arrSize; i++)
+  {
+    float_arr[i] = ((float)rand() / (float)RAND_MAX) * (max - min) + min;
   }
 
-  //Initialise thread to cmd args
+  // Initialise thread to cmd args
   thread_count = atoi(argv[1]);
-  
+
   // For the thread rank, use long in case of a 64-bit system.
   long thread;
 
@@ -60,17 +64,17 @@ int main(int argc, char* argv[])
   // block of memory on the heap (not the stack). So, it is essential
   // to use free() at the end of the program to free or “de-allocate”
   // the memory on the heap
-  thread_handles = malloc (thread_count*sizeof(pthread_t));
+  thread_handles = malloc(thread_count * sizeof(pthread_t));
 
   // Create the child threads, and pass the child thread rank “thread”
   // to the child_hello() function
   for (thread = 0; thread < thread_count; thread++)
-  pthread_create(&thread_handles[thread], NULL, child_hello, (void *) thread);
+    pthread_create(&thread_handles[thread], NULL, child_hello, (void *)thread);
 
   printf("Hello from the main thread\n");
 
   for (thread = 0; thread < thread_count; thread++)
-  pthread_join(thread_handles[thread], NULL);
+    pthread_join(thread_handles[thread], NULL);
 
   free(thread_handles);
   return 0;
