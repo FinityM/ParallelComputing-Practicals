@@ -7,7 +7,6 @@
  * Out arg:    A:       the matrix
  */
 
-
 #include <stdio.h>
 
 void Read_matrix(char prompt[] /* in  */, double A[] /* out */, int m /* in  */,
